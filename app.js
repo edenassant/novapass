@@ -13,6 +13,6 @@ document.addEventListener('DOMContentLoaded',()=>{
  const add=$('#addTicket'); if(add)add.addEventListener('click',()=>{localStorage.setItem('npCart','1');updateCart();toast('Ajouté !')});
  const modal=$('#infoModal'); const opens=$$('#openInfo,#openConditions'); const close=$('#closeInfo'); if(modal)opens.forEach(open=>open.addEventListener('click',()=>modal.classList.add('open'))); if(close&&modal)close.addEventListener('click',()=>modal.classList.remove('open'));
  $$('.fake-radio').forEach(x=>x.addEventListener('click',()=>{$$('.fake-radio').forEach(y=>y.classList.remove('selected'));x.classList.add('selected')}));
- const pay=$('#payNow'); if(pay)pay.addEventListener('click',()=>{let bad=false;$$('[data-required]').forEach(i=>{const f=i.closest('.field');if(!i.value.trim()){f.classList.add('bad');bad=true}else f.classList.remove('bad')});if(!bad){localStorage.setItem('npCart','0');location.href='confirmation.html'}})
+ const pay=$('#payNow'); if(pay)pay.addEventListener('click',()=>{let bad=false;$$('[data-required]').forEach(i=>{const f=i.closest('.field');if(!i.value.trim()||(i.type==='email'&&!i.validity.valid)){f.classList.add('bad');i.setAttribute('aria-invalid','true');bad=true}else{f.classList.remove('bad');i.removeAttribute('aria-invalid')}});if(!bad){localStorage.setItem('npCart','0');location.href='confirmation.html'}})
  const clear=$('#clearBooking'); if(clear)clear.addEventListener('click',()=>{localStorage.setItem('npCart','0');location.href='index.html'});
 });
