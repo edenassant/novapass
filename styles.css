@@ -1,4 +1,3 @@
-
 :root{--ink:#243042;--muted:#9aa2ad;--brand:#6d52d9;--accent:#ffcc45;--paper:#fff;--bg:#f4f5f8;--danger:#d23545}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -87,3 +86,68 @@ body *:focus{outline:3px solid #6d52d9}
     height:auto;
     display:block;
 }
+
+
+/* ---- corrections de la maquette Figma ---- */
+
+/* étiquettes plus foncées */
+.tag{color:#5b4bb0}
+
+/* choix du billet : rond plein ou vide + bordure plus épaisse */
+.ticket-option .row b:first-child::before{content:"○ "}
+.ticket-option.selected .row b:first-child::before{content:"● "}
+.ticket-option.selected{border:2px solid #5b4bb0}
+
+/* mode de retrait : on montre le rond du bouton radio */
+.fake-radio input{position:static;opacity:1;width:18px;height:18px;margin:0 8px 0 0;vertical-align:middle;accent-color:#5b4bb0}
+.fake-radio.selected{border:2px solid #5b4bb0}
+
+/* erreurs : bordure rouge + icône + message rouge */
+.error{color:#c62828}
+.error::before{content:"⚠ "}
+.field.bad input{border:2px solid #c62828}
+
+/* case à cocher plus grande */
+.marketing{font-size:16px}
+.marketing input{width:24px;height:24px;vertical-align:middle;margin:0 8px 0 0}
+
+
+/* ---- corrections accessibilité (TP) ---- */
+
+/* fieldset : on garde le même look qu'avant */
+fieldset.billets,fieldset.retrait{border:0;padding:0;min-width:0}
+fieldset.billets{margin:0 0 16px}
+fieldset.retrait{margin:20px 0 13px}
+fieldset.billets legend,fieldset.retrait legend{float:left;width:100%;padding:0;font-weight:bold}
+fieldset.billets legend{font-size:1.17em;margin:0 0 8px}
+fieldset.retrait legend{font-size:1.5em;margin:0 0 12px}
+fieldset.billets .ticket-option,fieldset.retrait .choice-row{clear:both}
+
+/* billets en boutons radio : on cache le rond du navigateur car on garde les ronds de la maquette */
+.ticket-option{display:block;position:relative}
+.ticket-option input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.ticket-option input:focus{outline:none}
+.ticket-option:focus-within{outline:3px solid #6d52d9;outline-offset:2px}
+.ticket-option .muted{display:block}
+
+/* "Voir les billets" en lien + effet au survol */
+.fake-button{text-decoration:none}
+.fake-button:hover{background:#5a3fc4}
+
+/* titres des cartes en h3 */
+.card-body h3{font-size:17px;margin:0 0 4px}
+
+/* bouton fermer plus lisible */
+.modal-close{padding:6px 8px;color:#4b5563}
+
+/* contrastes trop faibles (WAVE) */
+.req{color:#c62828}
+.progress-step{color:#3f4756}
+.legal{font-size:13px;color:#4b5563}
+.field input,.field select{border-color:#7b8494}
+
+/* messages d'erreur plus grands */
+.error{font-size:14px;margin-top:4px}
+
+/* ligne retrait cachée au départ */
+.summary-row[hidden]{display:none}
