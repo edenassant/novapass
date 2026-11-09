@@ -42,22 +42,28 @@
         <aside class="panel sticky-box">
             <h2>Réserver</h2>
 
-            <h3>1. Choisissez votre billet</h3>
+            <!-- billets en vrais boutons radio pour pouvoir les choisir au clavier -->
+            <fieldset class="billets">
+                <legend>1. Choisissez votre billet</legend>
 
-            <div class="ticket-option selected" data-price="29">
-                <div class="row"><b>Standard</b><b>29 €</b></div>
-                <div class="muted">Accès général</div>
-            </div>
+                <label class="ticket-option selected" data-price="29">
+                    <input type="radio" name="billet" value="standard" checked>
+                    <span class="row"><b>Standard</b><b>29 €</b></span>
+                    <span class="muted">Accès général</span>
+                </label>
 
-            <div class="ticket-option" data-price="49">
-                <div class="row"><b>Premium</b><b>49 €</b></div>
-                <div class="muted">Entrée prioritaire + boisson</div>
-            </div>
+                <label class="ticket-option" data-price="49">
+                    <input type="radio" name="billet" value="premium">
+                    <span class="row"><b>Premium</b><b>49 €</b></span>
+                    <span class="muted">Entrée prioritaire + boisson</span>
+                </label>
 
-            <div class="ticket-option" data-price="69">
-                <div class="row"><b>VIP</b><b>69 €</b></div>
-                <div class="muted">Mezzanine + vestiaire + 2 boissons</div>
-            </div>
+                <label class="ticket-option" data-price="69">
+                    <input type="radio" name="billet" value="vip">
+                    <span class="row"><b>VIP</b><b>69 €</b></span>
+                    <span class="muted">Mezzanine + vestiaire + 2 boissons</span>
+                </label>
+            </fieldset>
 
             <h3>2. Votre prix</h3>
             <div class="summary-row">
@@ -80,23 +86,21 @@
     </section>
 </main>
 
-<div class="footer">
+<!-- footer au lieu de div -->
+<footer class="footer">
     © 2026 NovaPass · <a href="#">Confidentialité</a> · <a href="#">CGV</a> · <a href="#">Accessibilité</a>
     <div style="margin-top:8px">Besoin d'aide ? 01 84 80 12 12  du lundi au vendredi.</div>
-</div>
+</footer>
 
-<div class="modal" id="infoModal">
+<!-- vrais boutons pour pouvoir fermer la fenêtre au clavier -->
+<div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="modal-card">
-        <div class="modal-close" id="closeInfo">fermer ×</div>
-        <h2>Besoin d'aide ?</h2>
+        <button type="button" class="modal-close" id="closeInfo">fermer ×</button>
+        <h2 id="infoTitle">Besoin d'aide ?</h2>
         <p>Choisissez un événement, sélectionnez un billet puis renseignez vos coordonnées.</p>
-        <div class="fake-button" id="closeInfo2" onclick="document.getElementById('infoModal').classList.remove('open')">OK</div>
+        <button type="button" class="fake-button" id="closeInfo2">OK</button>
     </div>
 </div>
-
-<script src="app.js"></script>
-</body>
-</html>
 
 <script src="app.js"></script>
 </body>

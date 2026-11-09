@@ -34,16 +34,17 @@
         <p>Nos recommandations cette semaine</p>
     </div>
 
+    <!-- titres en h3 et "Voir les billets" en vrai lien pour le clavier -->
     <section class="event-grid">
 
         <article class="card">
             <img src="assets/neon.svg" alt="">
             <div class="card-body">
                 <div class="tag">CONCERT</div>
-                <b>Neon Nights — Live</b>
+                <h3>Neon Nights — Live</h3>
                 <div class="meta">Ven. 6/11 · 20h30 · Hangar 14</div>
                 <div class="price">à partir de 29 €</div>
-                <div class="fake-button" data-href="event.html">Voir les billets</div>
+                <a class="fake-button" href="event.html">Voir les billets</a>
             </div>
         </article>
 
@@ -51,10 +52,10 @@
             <img src="assets/future.svg" alt="">
             <div class="card-body">
                 <div class="tag">CONFÉRENCE</div>
-                <b>Future / Now 2026</b>
+                <h3>Future / Now 2026</h3>
                 <div class="meta">Sam. 14/11 · 09h00 · Darwin</div>
                 <div class="price">39 €</div>
-                <div class="fake-button" data-href="event.html">Voir les billets</div>
+                <a class="fake-button" href="event.html">Voir les billets</a>
             </div>
         </article>
 
@@ -62,10 +63,10 @@
             <img src="assets/atelier.svg" alt="">
             <div class="card-body">
                 <div class="tag">ATELIER</div>
-                <b>Atelier : concevoir sans écran</b>
+                <h3>Atelier : concevoir sans écran</h3>
                 <div class="meta">Mer. 18/11 · 18h00 · FabLab Chartrons</div>
                 <div class="price">18 €</div>
-                <div class="fake-button" data-href="event.html">Voir les billets</div>
+                <a class="fake-button" href="event.html">Voir les billets</a>
             </div>
         </article>
 
@@ -82,17 +83,19 @@
 
 </main>
 
-<div class="footer">
+<!-- footer au lieu de div -->
+<footer class="footer">
     © 2026 NovaPass · <a href="#">Confidentialité</a> · <a href="#">CGV</a> · <a href="#">Accessibilité</a>
     <div style="margin-top:8px">Besoin d'aide ? 01 84 80 12 12 du lundi au vendredi.</div>
-</div>
+</footer>
 
-<div class="modal" id="infoModal">
+<!-- vrais boutons pour pouvoir fermer la fenêtre au clavier -->
+<div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <div class="modal-card">
-        <div class="modal-close" id="closeInfo">fermer ×</div>
-        <h2>Besoin d'aide ?</h2>
+        <button type="button" class="modal-close" id="closeInfo">fermer ×</button>
+        <h2 id="infoTitle">Besoin d'aide ?</h2>
         <p>Choisissez un événement, sélectionnez un billet puis renseignez vos coordonnées.</p>
-        <div class="fake-button" id="closeInfo2" onclick="document.getElementById('infoModal').classList.remove('open')">OK</div>
+        <button type="button" class="fake-button" id="closeInfo2">OK</button>
     </div>
 </div>
 

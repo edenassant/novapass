@@ -34,23 +34,24 @@
             <h2>Vos informations</h2>
             <p class="required-note"><span class="req">*</span> Champs obligatoires</p>
 
+            <!-- id sur les messages d'erreur pour les relier aux champs -->
             <div class="field">
                 <label for="firstName">Prénom <span class="req">*</span></label>
                 <input id="firstName" data-required type="text" autocomplete="given-name" placeholder="Votre prénom">
-                <div class="error">Indiquez votre prénom.</div>
+                <div class="error" id="firstName-error">Indiquez votre prénom.</div>
             </div>
 
             <div class="field">
                 <label for="lastName">Nom <span class="req">*</span></label>
                 <input id="lastName" data-required type="text" autocomplete="family-name" placeholder="Votre nom">
-                <div class="error">Indiquez votre nom.</div>
+                <div class="error" id="lastName-error">Indiquez votre nom.</div>
             </div>
 
             <div class="field">
                 <label for="email">Adresse e-mail <span class="req">*</span></label>
                 <input id="email" data-required type="email" autocomplete="email" placeholder="vous@exemple.fr">
                 <div class="hint">Le billet sera envoyé à cette adresse</div>
-                <div class="error">Indiquez une adresse e-mail valide.</div>
+                <div class="error" id="email-error">Adresse e-mail invalide. Exemple : nom@exemple.fr</div>
             </div>
 
             <div class="field">
@@ -59,35 +60,38 @@
                 <div class="hint">Ex : 06XXXXXXXX</div>
             </div>
 
-            <h2>Mode de retrait</h2>
-            <div class="choice-row">
-                <label class="fake-radio selected">
-                    <input type="radio" name="retrait" value="e-billet" checked> E-billet gratuit
-                </label>
-                <label class="fake-radio">
-                    <input type="radio" name="retrait" value="sur-place"> Retrait sur place +2 €
-                </label>
-            </div>
+            <!-- fieldset pour regrouper les choix du mode de retrait -->
+            <fieldset class="retrait">
+                <legend>Mode de retrait</legend>
+                <div class="choice-row">
+                    <label class="fake-radio selected">
+                        <input type="radio" name="retrait" value="e-billet" checked> E-billet gratuit
+                    </label>
+                    <label class="fake-radio">
+                        <input type="radio" name="retrait" value="sur-place"> Retrait sur place +2 €
+                    </label>
+                </div>
+            </fieldset>
 
             <h2>Paiement sécurisé</h2>
 
             <div class="field">
                 <label for="cardNumber">Numéro de carte <span class="req">*</span></label>
                 <input id="cardNumber" data-required inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456">
-                <div class="error">Indiquez le numéro de carte.</div>
+                <div class="error" id="cardNumber-error">Indiquez le numéro de carte.</div>
             </div>
 
             <div class="choice-row">
                 <div class="field">
                     <label for="expiry">Expiration <span class="req">*</span></label>
                     <input id="expiry" data-required autocomplete="cc-exp" placeholder="MM/AA">
-                    <div class="error">Indiquez la date d'expiration.</div>
+                    <div class="error" id="expiry-error">Indiquez la date d'expiration.</div>
                 </div>
 
                 <div class="field">
                     <label for="cvv">CVV <span class="req">*</span></label>
                     <input id="cvv" data-required inputmode="numeric" autocomplete="cc-csc" placeholder="123">
-                    <div class="error">Indiquez le CVV.</div>
+                    <div class="error" id="cvv-error">Indiquez le CVV.</div>
                 </div>
             </div>
 
@@ -95,17 +99,20 @@
                 <label><input type="checkbox"> J'accepte de recevoir les offres de NovaPass et de ses partenaires.</label>
             </div>
 
-            <button class="fake-button payment-button" id="payNow" type="submit">Payer 33,90 € maintenant</button>
+            <!-- texte des CGV mis avant le bouton Payer -->
             <p class="legal">Le clic sur « Payer » vaut acceptation des CGV. Les données nécessaires à la transaction sont traitées par nos prestataires.</p>
+            <button class="fake-button payment-button" id="payNow" type="submit">Payer 33,90 € maintenant</button>
 
         </form>
 
         <aside class="panel sticky-box">
             <h3>Récapitulatif</h3>
 
-            <div class="summary-row"><span>Neon Nights × 1</span><span>29,00 €</span></div>
+            <div class="summary-row"><span id="billetNom">Neon Nights × 1</span><span id="billetPrix">29,00 €</span></div>
             <div class="summary-row"><span>Frais de service</span><span>4,90 €</span></div>
-            <div class="summary-row total"><span>Total</span><span>33,90 €</span></div>
+            <!-- billet choisi, ligne retrait et total qui changent (voir app.js) -->
+            <div class="summary-row" id="retraitRow" hidden><span>Retrait sur place</span><span>2,00 €</span></div>
+            <div class="summary-row total" aria-live="polite"><span>Total</span><span id="totalPrice">33,90 €</span></div>
 
             <div class="summary-actions">
                 <a class="safe-secondary fake-button" href="event.html" data-href="event.html">Modifier</a>
